@@ -1,0 +1,26 @@
+name: Docker Image CI & publish to github package 
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout code from master branch
+      uses: actions/checkout@v3
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.TOKEN }}
+
+    - name: Build the Docker image
+      run: |
+          docker build . --tag ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
+          docker run ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
+          docker push ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
