@@ -9,18 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout code form main branch
-    - uses: actions/checkout@v3
+     - name: checkout code form main branch
+     - uses: actions/checkout@v3
     
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
+     - name: Login to GitHub Container Registry
+       uses: docker/login-action@v1
+       with:
         registry: ghcr.io
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.TOKEN }}
         
-    - name: Build the Docker image
-      run: |
-         docker build . --file Dockerfile --tag first-image:$(date +%s)
-         docker push ghcr.io/${{ secrets.USERNAME }}/first-image:$(date +%s)
+     - name: Build the Docker image
+       run: |
+        docker build . --file Dockerfile --tag first-image:$(date +%s)
+        docker push ghcr.io/${{ secrets.USERNAME }}/first-image:$(date +%s)
       
