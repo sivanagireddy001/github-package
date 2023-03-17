@@ -22,5 +22,4 @@ jobs:
     - name: Build the Docker image
       run: |
           docker build . --tag ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
-          docker run ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
           docker push ghcr.io/${{ secrets.USERNAME }}/sample-github-package:latest
