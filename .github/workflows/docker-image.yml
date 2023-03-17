@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - name: checkout code form main branch
      - uses: actions/checkout@v3
     
      - name: Login to GitHub Container Registry
