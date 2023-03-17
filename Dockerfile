@@ -1,7 +1,7 @@
 FROM python:latest
 
-ADD sample.py /app
-WORKDIR /app
+ADD sample.py /
+WORKDIR /
 
 CMD ["python", "./sample.py"]
 
