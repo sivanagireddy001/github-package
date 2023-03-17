@@ -20,6 +20,6 @@ jobs:
         
      - name: Build the Docker image
        run: |
-        docker build . --file Dockerfile --tag first-image:$(date +%s)
+        docker build . --file Dockerfile --tag first-image:1.0
         docker push ghcr.io/${{ secrets.USERNAME }}/first-image:1.0
       
